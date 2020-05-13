@@ -23,3 +23,32 @@ let mostPopularFood = [
 // After all the foods have been logged, the program should end.
 //
 // HINT: You'll need to use `setInterval` and `clearInterval`.
+
+
+
+// mostPopularFood.reverse().forEach(
+//   function (element)
+//   {
+//     if (timer%1000 === 0)
+//     {
+//       console.log(element);
+
+//     }
+      
+//   }
+// );
+
+           //  set your counter to 1
+let timers = [];
+
+for (let i=0; i<mostPopularFood.length; i++) {
+  
+
+  let timer = setInterval( 
+      function timer() {
+        console.log(`${i+1}) ${mostPopularFood[i]}.`);
+        clearInterval(timers[i]);
+    }, i*1000 );
+
+  timers.push(timer);
+}

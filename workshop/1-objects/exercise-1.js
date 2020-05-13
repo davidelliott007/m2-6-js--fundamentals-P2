@@ -16,44 +16,74 @@
 //     monthOfBirth: 'July'
 // }
 
-// A) console.log() your object.
-// B) console.log() a few of the values in the object.
+let myObject = {
+    name: {
+        first: 'Dave',
+        last: 'Elliott',
+    },
+    age: '50',
+    city: 'Montreal',
+    siblings: 1,
+    petName: 'Frisky',
+    monthOfBirth: 'Decemember'
+}
 
-//-------------------------------------------------
+console.log(myObject);
+console.log(myObject.age);
+console.log(myObject.city);
 
-// Exercise A
-// ------------
-// Add three more key/value pairs to your object that represent other attributes
-// of yourself. Ideas include (but are not limited to):
-//     - Favorite TV Shows/Movies/Sports/Activities etc.
-//     - Occupation
-//     - Date of Birth
-//     - Pets (number of pets, names of pets, etc.)
 
-// HINT: You can just modify the object that you created before.
+// // A) console.log() your object.
+// // B) console.log() a few of the values in the object.
 
-//-------------------------------------------------
+// //-------------------------------------------------
 
-// Exercise B
-// ------------
-// Look up your favorite movie on IMDB, and make an object that represents some
-// aspects of that movie, *e.g.*:
-//     - Title
-//     - Director
-//     - Year released
-//     - Rating
-//     - Actors
+// // Exercise A
+// // ------------
+// // Add three more key/value pairs to your object that represent other attributes
+// // of yourself. Ideas include (but are not limited to):
+// //     - Favorite TV Shows/Movies/Sports/Activities etc.
+// //     - Occupation
+// //     - Date of Birth
+// //     - Pets (number of pets, names of pets, etc.)
 
-// HINT: Most movies have multiple actors. What data-structure do we use to
-// represent a collection of similar things?
 
-let favoriteMovie = {};
+myObject.tvshow = "Seinfeld";
+myObject.occupation = "Worker";
 
-//-------------------------------------------------
+console.log(myObject);
 
-// Exercise C
-// ------------
-// Fix the attempts to access values in the `person` object:
+// // HINT: You can just modify the object that you created before.
+
+// //-------------------------------------------------
+
+// // Exercise B
+// // ------------
+// // Look up your favorite movie on IMDB, and make an object that represents some
+// // aspects of that movie, *e.g.*:
+// //     - Title
+// //     - Director
+// //     - Year released
+// //     - Rating
+// //     - Actors
+
+let faveMovie = {
+  Actors: ["Al Pacino", "Robert Deniro"],
+  title: 'Heat',
+  director: 'Michael Mann',
+}
+
+
+// // HINT: Most movies have multiple actors. What data-structure do we use to
+// // represent a collection of similar things?
+
+// let favoriteMovie = {};
+
+// //-------------------------------------------------
+
+// // Exercise C
+// // ------------
+// // Fix the attempts to access values in the `person` object:
 
 const key = 'name';
 const person = {
@@ -62,19 +92,19 @@ const person = {
   hometown: 'somewhere',
 };
 
-person[age]; // => 26
-person.key; // => "Alyssa P. Hacker"
+console.log(person.age); // => 26
+console.log(eval('person.'+key)); // => "Alyssa P. Hacker"
 
-//-------------------------------------------------
+// //-------------------------------------------------
 
-// Exercise D
-// ------------
-// Write a function `fullName` that takes a person object as an argument, and
-// returns that person's full name as a string. By *person object*, we mean an
-// object that has the structure of the object you created to represent
-// yourself above.
+// // Exercise D
+// // ------------
+// // Write a function `fullName` that takes a person object as an argument, and
+// // returns that person's full name as a string. By *person object*, we mean an
+// // object that has the structure of the object you created to represent
+// // yourself above.
 
-// Example
+// // Example
 const alyssa = {
   name: {
     first: 'Alyssa',
@@ -85,20 +115,21 @@ const alyssa = {
 };
 
 function fullName(person) {
-  // Your code here
+  let name = person.name;
+  return (name.first +" "+name.middle + " "+name.last );
 }
 
-console.log(fullName(alyssa)); // => "Alyssa P. Hacker"
+ console.log(fullName(alyssa)); // => "Alyssa P. Hacker"
 
-// Exercise E
-// ------------
-// What happens if you pass a person object to `fullName` that doesn't have a
-// middle name? It's likely that you'd get a double space: "Alyssa  Hacker"
+// // Exercise E
+// // ------------
+// // What happens if you pass a person object to `fullName` that doesn't have a
+// // middle name? It's likely that you'd get a double space: "Alyssa  Hacker"
 
-// Your `fullName` function should work correctly regardless of whether or not
-// the person has a middle name -- if it doesn't produce the output shown above
-// when given the object `{name: {first: "John", last: "Doe"}}`, fix it so that
-// it does.
+// // Your `fullName` function should work correctly regardless of whether or not
+// // the person has a middle name -- if it doesn't produce the output shown above
+// // when given the object `{name: {first: "John", last: "Doe"}}`, fix it so that
+// // it does.
 
 const rick = {
   name: {
@@ -109,7 +140,8 @@ const rick = {
 };
 
 function betterFullName(person) {
-  // Your code here
+  let names = Object.values(person.name);
+  console.log(names);
+  return (names.join(" "));
 }
-
-console.log(betterFullName(rick)); // => "Rick Sanchez"
+ console.log(betterFullName(rick)); // => "Rick Sanchez"
