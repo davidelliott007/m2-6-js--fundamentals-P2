@@ -16,3 +16,14 @@ let foodPairings = {
 // 6.2 Write a script that outputs each key/value pair to the console a sentence like this:
 // "With <FOOD_ITEM>, it is best to have <BEVERAGE>."
 
+Object.entries(foodPairings).forEach(
+  function (element)
+  {
+    
+    console.log(`With ${element[0]}, it is best to have ${element[1]}.`);
+  }
+);
+
+
+
+

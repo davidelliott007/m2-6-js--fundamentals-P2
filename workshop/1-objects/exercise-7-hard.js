@@ -31,7 +31,7 @@ const favouriteDessertsGroupB = {
   colin: 'gummy bears',
   damien: 'child tears',
   ellicia: 'panda express',
-  fertrude: 'gummy bears'.
+  fertrude: 'gummy bears',
   glinda: 'pie',
   hethel: 'not applicable',
   irsula: 'rum cake',
@@ -54,7 +54,41 @@ const favouriteDessertsGroupB = {
 // - Second, put them in order
 
 function sortDessertsByPopularity(dessertObject) {
-  // Write code
+  let foodCounts = {};
+
+  Object.values(dessertObject).forEach(
+    function (element)
+    {
+      if (foodCounts.hasOwnProperty(element)) {
+        foodCounts[element] = foodCounts[element] + 1;
+      }
+      else {
+        foodCounts[element] = 1;
+      }
+    }
+  );
+
+  let foodCountArray = [];
+  Object.entries(foodCounts).forEach(
+    function (element)
+    {foodCountArray.push({food:element[0], count:element[1]});
+    }
+  );
+
+
+  foodCountArray.sort(function(a, b) {
+    if (a.count > b.count) {
+      return -1;
+    }
+    if (b.count < a.count) {
+      return 1;
+    }
+    //must be equal
+    return 0;
+  });
+
+  return foodCountArray;
+
 }
 
 console.log(
@@ -97,6 +131,23 @@ order, and that's 100% OK).
 
 function groupPeopleByDessert(dessertObject) {
 
+  let dessertsByPeople = {};
+  for (let [name, food] of Object.entries(dessertObject))
+  {
+    var foodString = String(food);
+    if (dessertsByPeople.hasOwnProperty(foodString)) {
+      let localArr = dessertsByPeople[foodString];
+      localArr.push(name);
+      dessertsByPeople[foodString] = localArr;
+    }
+    else {
+      let localArr = []
+      localArr.push(name);
+      dessertsByPeople[foodString] = localArr;
+    } 
+  }
+
+return dessertsByPeople;
 }
 
 console.log(

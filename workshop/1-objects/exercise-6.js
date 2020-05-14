@@ -20,17 +20,17 @@ let inputData = {
   motherAge: 35,
   motherStatus: 'worried',
   motherSuperpower1: null,
-  motherSuperpower1: null,
+  motherSuperpower2: null,
   bestFriendName: 'Mike Wheeler',
   bestFriendAge: 9,
   bestFriendStatus: 'frenetic',
   bestFriendSuperpower1: null,
-  bestFriendSuperpower1: null,
+  bestFriendSuperpower2: null,
   girlfriendName: 'Eleven',
   girlfriendAge: 9,
   girlfriendStatus: 'angry',
   girlfriendSuperpower1: 'telepathy',
-  girlfriendSuperpower1: 'multiverse portal sealing',
+  girlfriendSuperpower2: 'multiverse portal sealing',
 };
 
 /*
@@ -38,14 +38,14 @@ let inputData = {
 We want a function that can transform it from that shape to this shape:
 
 {
-  "name": "Will Byers",
+  "name "Will Byers",
   "age": 9,
   "status": "upside down",
   "address": {
     "streetAddress": "123 Whatever street",
     "city": "Hawkins",
     "state": "Indiana",
-    "country": "United States"
+    "country": "":United States"
   },
   "superpowers": [
     "can-blink-lights"
@@ -88,7 +88,46 @@ For example, the main superpowers array should be:
 */
 
 function transformData(data) {
-  // Your code here
+  let superpowersArr = [data.superpower1, data.superpower2];
+  // console.log(superpowers);
+  superpowersArr = superpowersArr.filter(function(element) {return element != null});
+  // console.log(superpowers);
+
+  let relationshipsArr = [];
+  let motherSuperPowers = [data.motherSuperpower1, data.motherSuperpower2];
+  motherSuperPowers = motherSuperPowers.filter(function(element) {return element != null});
+  relationshipsArr.push({type:"mother", name:data.motherName, age:data.motherAge, status:data.motherStatus, superpowers:motherSuperPowers});
+
+
+  let bestFriendSuperPowers = [data.bestFriendSuperpower1, data.bestFriendSuperpower2];
+  bestFriendSuperPowers = bestFriendSuperPowers.filter(function(element) {return element != null});
+  relationshipsArr.push({type:"best-friend", name:data.bestFriendName, age:data.bestFriendAge, status:data.bestFriendStatus, superpowers:bestFriendSuperPowers});
+
+
+  let girlFriendSuperPowers = [data.girlfriendSuperpower1, data.girlfriendSuperpower2];
+  girlFriendSuperPowers = girlFriendSuperPowers.filter(function(element) {return element != null});
+  relationshipsArr.push({type:"girlfriend", name:data.girlfriendName, age:data.girlfriendAge, status:data.girlfriendStatus, superpowers:girlFriendSuperPowers});
+
+
+  let transformedObject = 
+{
+  name: data.name,
+  age: data.age,
+  status: data.status,
+  address: 
+  {
+    streetAddress : data.address1,
+    city: data.addressCity,
+    state: data.addressState,
+    country: data.addressCountry
+  },
+  superpowers: superpowersArr,
+  relationships: relationshipsArr
+
+
+
+}
+return transformedObject;
 }
 
 /*
